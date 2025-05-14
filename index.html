@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karya Sukses Mandiri - Furniture Kantor</title>
+  <link rel="icon" href="Logo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; background: white; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    nav { background: #f97316; color: white; padding: 1rem; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
+    nav .logo { width: 50px; height: 50px; border-radius: 50%; object-fit: contain; }
+    nav .logo-title { display: flex; align-items: center; gap: 1rem; }
+    nav h1 { font-size: 1.75rem; font-weight: 600; color: white; }
+    nav ul { list-style: none; display: flex; gap: 1.5rem; }
+    nav ul li a { color: white; text-decoration: none; font-weight: 400; transition: color 0.3s; }
+    nav ul li a:hover { color: #facc15; }
+    .hamburger { display: none; cursor: pointer; position: absolute; top: 1rem; right: 1rem; z-index: 30; }
+    .hamburger i { font-size: 1.5rem; color: white; transition: transform 0.3s; }
+    .hamburger i.fa-times { transform: rotate(180deg); }
+    .swiper.banner-slider { width: 100%; height: 500px; }
+    .swiper.banner-slider .swiper-slide img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .swiper-button-prev, .swiper-button-next { color: #f97316; width: 30px; height: 30px; }
+    .swiper-button-prev::after, .swiper-button-next::after { font-size: 20px; }
+    .swiper-pagination-bullet { background: #f97316; opacity: 1; }
+    .swiper-pagination-bullet-active { background: #facc15; }
+    .hero { background: #f97316; color: white; padding: 4rem 0; text-align: center; }
+    .hero h2 { font-size: 2.5rem; font-weight: 600; margin-bottom: 1rem; }
+    .hero p { font-size: 1.25rem; font-weight: 300; margin-bottom: 2rem; }
+    .hero .buttons { display: flex; justify-content: center; gap: 1rem; }
+    .hero .buttons a { padding: 0.75rem 2rem; border-radius: 25px; text-decoration: none; font-weight: 400; transition: all 0.3s; }
+    .hero .buttons a:first-child { background: white; color: #f97316; }
+    .hero .buttons a:first-child:hover { background: #facc15; transform: scale(1.05); }
+    .hero .buttons a:last-child { border: 2px solid white; color: white; }
+    .hero .buttons a:last-child:hover { background: white; color: #f97316; transform: scale(1.05); }
+    .categories { padding: 4rem 0; }
+    .categories h3 { font-size: 2rem; font-weight: 600; text-align: center; margin-bottom: 2.5rem; color: #f97316; }
+    .categories .grid { display: flex; flex-wrap: nowrap; gap: 2rem; overflow-x: auto; padding-bottom: 1rem; }
+    .categories .grid a { flex: 0 0 auto; text-align: center; padding: 2rem; background: white; border-radius: 10px; text-decoration: none; color: #f97316; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s, background 0.3s; min-width: 180px; }
+    .categories .grid a:hover { transform: translateY(-5px); background: #facc15; }
+    .categories .grid img { width: 60px; height: 60px; margin-bottom: 1rem; object-fit: contain; }
+    .categories .grid p { font-weight: 400; }
+    .featured { padding: 4rem 0; background: #f9fafb; }
+    .featured h3 { font-size: 2rem; font-weight: 600; text-align: center; margin-bottom: 2.5rem; color: #f97316; }
+    .featured .swiper { height: auto; padding: 1rem 0; }
+    .featured .swiper-slide { text-align: center; padding: 1rem; background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .featured .swiper-slide img { width: 100%; max-width: 200px; height: 200px; object-fit: cover; margin-bottom: 1rem; border-radius: 5px; aspect-ratio: 1/1; }
+    .featured .swiper-slide h4 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: #f97316; }
+    .featured .swiper-slide a { background: #f97316; color: white; padding: 0.5rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: 400; transition: background 0.3s; }
+    .featured .swiper-slide a:hover { background: #facc15; }
+    .featured .see-more { text-align: center; margin-top: 1.5rem; }
+    .featured .see-more a { color: #f97316; text-decoration: none; font-weight: 400; }
+    .featured .see-more a:hover { text-decoration: underline; color: #facc15; }
+    .blog { padding: 4rem 0; }
+    .blog h3 { font-size: 2rem; font-weight: 600; text-align: center; margin-bottom: 2.5rem; color: #f97316; }
+    .blog .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .blog .grid .card { background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 10px; overflow: hidden; transition: transform 0.3s; }
+    .blog .grid .card:hover { transform: translateY(-5px); }
+    .blog .grid .card img { width: 100%; height: 200px; object-fit: cover; }
+    .blog .grid .card .content { padding: 1.5rem; }
+    .blog .grid .card h4 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: #f97316; }
+    .blog .grid .card .date { font-size: 0.875rem; color: #6b7280; margin-bottom: 0.5rem; }
+    .blog .grid .card p { color: #4b5563; margin-bottom: 1rem; font-weight: 300; }
+    .blog .grid .card a { color: #f97316; text-decoration: none; font-weight: 400; }
+    .blog .grid .card a:hover { text-decoration: underline; }
+    .about { padding: 4rem 0; background: #f9fafb; }
+    .about h3 { font-size: 2rem; font-weight: 600; text-align: center; margin-bottom: 2.5rem; color: #f97316; }
+    .about .about-content { display: flex; align-items: center; gap: 2rem; }
+    .about .swiper.about-slider { width: 50%; height: auto; }
+    .about .swiper-slide img { width: 100%; max-width: 400px; height: 400px; object-fit: cover; border-radius: 10px; aspect-ratio: 1/1; margin: 0 auto; display: block; }
+    .about .text-content { width: 50%; text-align: left; }
+    .about .text-content p { margin-bottom: 1.5rem; color: #4b5563; font-weight: 300; }
+    .about .link a { color: #f97316; text-decoration: none; font-weight: 400; }
+    .about .link a:hover { text-decoration: underline; }
+    footer { background: #f97316; color: white; padding: 3rem 0; }
+    footer .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; }
+    footer h4 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; }
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 0.5rem; }
+    footer ul li a { color: white; text-decoration: none; font-weight: 300; }
+    footer ul li a:hover { color: #facc15; }
+    footer .payment-methods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 240px; margin-left: -1rem; }
+    footer .payment-methods .payment-logo { background: white; border-radius: 5px; padding: 5px; display: flex; justify-content: center; align-items: center; }
+    footer .payment-methods img { width: 65px; height: 30px; object-fit: contain; }
+    footer .contact .contact-icons { display: flex; flex-direction: column; gap: 0.75rem; }
+    footer .contact .contact-icons p { color: white; margin: 0; display: flex; align-items: center; gap: 0.5rem; font-weight: 300; }
+    footer .contact .contact-icons p i { color: white; }
+    footer .social { display: flex; gap: 1rem; margin-top: 1rem; }
+    footer .social a { color: white; font-size: 1.25rem; }
+    footer .social a:hover { color: #facc15; }
+    footer form { display: flex; flex-direction: column; gap: 1rem; }
+    footer form input, footer form textarea { padding: 0.5rem; border-radius: 5px; border: none; font-family: 'Poppins', sans-serif; }
+    footer form button { background: #f97316; color: white; padding: 0.5rem; border: 2px solid white; border-radius: 5px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 400; }
+    footer form button:hover { background: #facc15; }
+    footer .copyright { text-align: center; margin-top: 2rem; font-weight: 300; }
+    .scroll-to-top { position: fixed; bottom: 20px; right: 20px; background: #f97316; color: white; width: 40px; height: 40px; line-height: 40px; text-align: center; border-radius: 50%; cursor: pointer; display: none; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    .scroll-to-top.show { display: block; }
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      nav ul.active { display: flex; flex-direction: column; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #f97316; justify-content: center; align-items: center; z-index: 20; gap: 2rem; }
+      nav ul.active li a { color: white; font-size: 1.25rem; }
+      .hamburger { display: block; }
+      .hamburger i.fa-times { color: white; }
+      .swiper.banner-slider { height: 250px; }
+      .swiper.banner-slider .swiper-slide img { object-fit: contain; }
+      .hero h2 { font-size: 1.75rem; }
+      .hero p { font-size: 1rem; }
+      .hero .buttons { flex-direction: column; gap: 0.75rem; }
+      .categories .grid { flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding-bottom: 0.5rem; }
+      .categories .grid a { min-width: 160px; padding: 1.5rem; }
+      .about .about-content { flex-direction: column; gap: 1rem; }
+      .about .swiper.about-slider { width: 100%; }
+      .about .text-content { width: 100%; text-align: center; }
+      .about .swiper-slide img { max-width: 300px; height: 300px; }
+      .featured .swiper-slide img { max-width: 150px; height: 150px; }
+      footer .grid { gap: 2rem; }
+      footer .payment-methods { max-width: 200px; margin-left: -0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <div class="logo-title">
+        <img src="./Logo.png" alt="Logo Karya Sukses Mandiri" class="logo">
+        <h1>Karya Sukses Mandiri</h1>
+      </div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul>
+        <li><a href="/">Beranda</a></li>
+        <li><a href="/produk">Produk</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/tentang-kami">Tentang Kami</a></li>
+        <li><a href="/kontak">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="swiper banner-slider">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="./banner/Banner1.JPG" alt="Banner 1" /></div>
+      <div class="swiper-slide"><img src="./banner/banner2.jpg" alt="Banner 2" /></div>
+      <div class="swiper-slide"><img src="./banner/banner3.PNG" alt="Banner 3" /></div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+  <section class="hero">
+    <div class="container">
+      <h2>Zona Produktivitas Penuh Inspirasi, Profesional dengan Furnitur Berkualitas</h2>
+      <p>Jangan salah pilih dan percayakan pada yang ahli, Kami adalah spesialis furnitur kantor yang telah berpengalaman lebih dari 10 Tahun.</p>
+      <div class="buttons">
+        <a href="/produk">Lihat Produk</a>
+        <a href="/kontak">Hubungi Kami</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="categories">
+    <div class="container">
+      <h3>Kategori Produk</h3>
+      <div class="grid">
+        <a href="/produk"><img src="icon/lainnya-icon.png" alt="Semua Produk"><p>Semua Produk</p></a>
+        <a href="/produk"><img src="icon/cubicle-icon.png" alt="Cubicle"><p>Cubicle</p></a>
+        <a href="/produk"><img src="icon/mejameeting-icon.png" alt="Meja Meeting"><p>Meja Meeting</p></a>
+        <a href="/produk"><img src="icon/kursikantor-icon.png" alt="Kursi Kantor"><p>Kursi Kantor</p></a>
+        <a href="/produk"><img src="icon/mejakerja-icon.png" alt="Meja Kerja"><p>Meja Kerja</p></a>
+        <a href="/produk"><img src="icon/lemarikantor-icon.png" alt="Lemari Kantor"><p>Lemari Kantor</p></a>
+        <a href="/produk"><img src="icon/mejaresepsionis-icon.png" alt="Meja Resepsionis"><p>Meja Resepsionis</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured">
+    <div class="container">
+      <h3>Produk Unggulan</h3>
+      <div class="swiper featured-products">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="./produk-cubicle/Cubicle-3org.jpg" alt="Cubicle 3 Orang" />
+            <h4>Meja Cubicle 3 Orang Premium</h4>
+            <a href="https://wa.me/6282117710288?text=Saya%20ingin%20penawaran%20untuk%20produk%20KSM" target="_blank">Minta Penawaran</a>
+          </div>
+          <div class="swiper-slide">
+            <img src="./produk-mejakerja/Meja BC-A16.jpg" alt="Meja Direktur 160cm SF" />
+            <h4>Meja Direktur Model L 160 Cm</h4>
+            <a href="https://wa.me/6282117710288?text=Saya%20ingin%20penawaran%20untuk%20produk%20KSM" target="_blank">Minta Penawaran</a>
+          </div>
+          <div class="swiper-slide">
+            <img src="./produk-kursikantor/Kursi Darwin HR - grey.jpg" alt="Darwin HR Grey" />
+            <h4>Kursi Kantor Darwin HR - Abu-abu</h4>
+            <a href="https://wa.me/6282117710288?text=Saya%20ingin%20penawaran%20untuk%20produk%20KSM" target="_blank">Minta Penawaran</a>
+          </div>
+          <div class="swiper-slide">
+            <img src="./produk-lemarikantor/Lemari Besi 2 Pintu Kaca.jpg" alt="Lemari Besi 2 Pintu Kaca" />
+            <h4>Lemari Kantor Besi 2 Pintu Kaca</h4>
+            <a href="https://wa.me/6282117710288?text=Saya%20ingin%20penawaran%20untuk%20produk%20KSM" target="_blank">Minta Penawaran</a>
+          </div>
+          <div class="swiper-slide">
+            <img src="./produk-mejameeting/Meja Meeting 406x406 cm.jpg" alt="Meja Meeting O 406x406 Cm" />
+            <h4>Meja Meeting Bentuk O Uk. 406x406 Cm</h4>
+            <a href="https://wa.me/6282117710288?text=Saya%20ingin%20penawaran%20untuk%20produk%20KSM" target="_blank">Minta Penawaran</a>
+          </div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      <div class="see-more">
+        <a href="/produk">Lihat Selengkapnya</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="blog">
+    <div class="container">
+      <h3>Artikel Terbaru</h3>
+      <div class="grid">
+        <div class="card">
+          <img src="./Artikel/artikel 2.jpg" alt="Artikel 1" />
+          <div class="content">
+            <h4>Tips Memilih Furnitur Kantor</h4>
+            <p class="date">01 Mei 2025</p>
+            <p>Pelajari cara memilih furnitur yang nyaman dan fungsional untuk kantor Anda.</p>
+            <a href="/blog">Lihat Lengkap</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./Artikel/artikel 1.jpg" alt="Artikel 2" />
+          <div class="content">
+            <h4>Tren Desain Kantor 2025</h4>
+            <p class="date">15 April 2025</p>
+            <p>Temukan tren terbaru dalam desain interior kantor modern.</p>
+            <a href="/blog">Lihat Lengkap</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./Artikel/artikel 3.jpg" alt="Artikel 3" />
+          <div class="content">
+            <h4>Merawat Furnitur Kantor</h4>
+            <p class="date">10 Maret 2025</p>
+            <p>Cara mudah merawat furnitur agar tahan lama.</p>
+            <a href="/blog">Lihat Lengkap</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="container">
+      <h3>Tentang Kami</h3>
+      <div class="about-content">
+        <div class="swiper about-slider">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="./banner/Banner7.jpg" alt="Tentang Kami 1" /></div>
+            <div class="swiper-slide"><img src="./banner/Banner8.jpg" alt="Tentang Kami 2" /></div>
+            <div class="swiper-slide"><img src="./banner/Banner9.jpg" alt="Tentang Kami 3" /></div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="text-content">
+          <p>Karya Sukses Mandiri adalah spesialis furnitur kantor dengan pengalaman lebih dari 10 tahun, menyediakan solusi profesional untuk produktivitas maksimal.</p>
+          <div class="link">
+            <a href="/tentang-kami">Pelajari Lebih Lanjut</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="grid">
+        <div>
+          <h4>Kategori Produk</h4>
+          <ul>
+            <li><a href="/produk">Semua Produk</a></li>
+            <li><a href="/produk">Cubicle</a></li>
+            <li><a href="/produk">Meja Meeting</a></li>
+            <li><a href="/produk">Kursi Kantor</a></li>
+            <li><a href="/produk">Meja Kerja</a></li>
+            <li><a href="/produk">Lemari Kantor</a></li>
+            <li><a href="/produk">Meja Resepsionis</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Metode Pembayaran</h4>
+          <div class="payment-methods">
+            <div class="payment-logo"><img src="./Logo/Visa.png" alt="Visa Payment" /></div>
+            <div class="payment-logo"><img src="./Logo/MasterCard.png" alt="MasterCard Payment" /></div>
+            <div class="payment-logo"><img src="./Logo/Logo_QRIS.png" alt="QRIS Payment" /></div>
+            <div class="payment-logo"><img src="./Logo/BCA.png" alt="BCA Payment" /></div>
+            <div class="payment-logo"><img src="./Logo/Bank_Mandiri.png" alt="Mandiri Payment" /></div>
+            <div class="payment-logo"><img src="./Logo/Bank_Syariah_Indonesia.svg.png" alt="BSI Payment" /></div>
+            <div class="payment-logo"><img src="./Logo/cimb.png" alt="CIMB Payment" /></div>
+            <div class="payment-logo"><img src="./Logo/ShopeePay.png" alt="ShopeePay Payment" /></div>
+            <div class="payment-logo"><img src="./Logo/logo-gopay.png" alt="GoPay Payment" /></div>
+          </div>
+        </div>
+        <div>
+          <h4>Kontak Kami</h4>
+          <div class="contact-icons">
+            <p><i class="fas fa-phone"></i> 0821 1771 0288</p>
+            <p><i class="fas fa-phone"></i> 0899 652 9898</p>
+            <p><i class="fas fa-phone"></i> 085 648 277 299</p>
+            <p><i class="fas fa-envelope"></i> ksuksesmandiri@gmail.com</p>
+          </div>
+          <div class="social">
+            <a href="https://wa.me/+6282117710288" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://instagram.com/karyasuksesmandiri" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com/ksuksesmandiri" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://tiktok.com/@ksm_karyasuksesmandiri" target="_blank"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Hubungi Kami</h4>
+          <form action="/submit" method="POST">
+            <input type="text" placeholder="Nama" required />
+            <input type="email" placeholder="Email" required />
+            <textarea placeholder="Pesan" rows="3" required></textarea>
+            <button type="submit">Kirim</button>
+          </form>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© 2025 Karya Sukses Mandiri. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="scroll-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        new Swiper('.banner-slider', {
+          loop: true,
+          autoplay: { delay: 5000 },
+          pagination: { el: '.swiper-pagination', clickable: true, bulletActiveClass: 'swiper-pagination-bullet-active' },
+          navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        });
+
+        new Swiper('.featured-products', {
+          loop: true,
+          slidesPerView: 1,
+          spaceBetween: 20,
+          navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+          breakpoints: {
+            640: { slidesPerView: 2 },
+            768: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 },
+          },
+        });
+
+        new Swiper('.about-slider', {
+          loop: true,
+          autoplay: { delay: 5000 },
+          pagination: { el: '.swiper-pagination', clickable: true, bulletActiveClass: 'swiper-pagination-bullet-active' },
+        });
+      } catch (e) {
+        console.error('Swiper initialization failed:', e);
+      }
+
+      window.addEventListener('scroll', () => {
+        const scrollToTop = document.querySelector('.scroll-to-top');
+        if (window.pageYOffset > 300) {
+          scrollToTop.classList.add('show');
+        } else {
+          scrollToTop.classList.remove('show');
+        }
+      });
+    });
+
+    function toggleMenu() {
+      const menu = document.querySelector('nav ul');
+      const hamburger = document.querySelector('.hamburger i');
+      menu.classList.toggle('active');
+      hamburger.className = menu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+    }
+  </script>
+</body>
+</html>
